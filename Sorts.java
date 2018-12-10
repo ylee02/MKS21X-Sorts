@@ -10,7 +10,7 @@ public class Sorts {
       ary[counter] = ran.nextInt() % 300;
       counter++;
     }
-    System.out.println(Arrays.toString(selectionSort(ary)));
+    System.out.println(Arrays.toString(insertionSort(ary)));
   }
 
   public static int[] bubbleSort(int[] data) {
@@ -38,6 +38,28 @@ public class Sorts {
       int temp = ary[y];
       ary[y] = ary[smallest];
       ary[smallest] = temp;
+    }
+    return ary;
+  }
+
+  public static int[] insertionSort(int[] ary) {
+    for (int i = 1; i < ary.length; i++) {
+      if (ary[i - 1] > ary[i]) {
+        boolean done = false;
+        int y = i;
+        int temp = ary[y];
+        while (! done) {
+          if (y == 0 || ary[y - 1] > ary[y]) {
+            ary[y + 1] = ary[y];
+            ary[y] = temp;
+            done = true;
+          }
+          else {
+            ary[y + 1] = ary[y];
+            y--;
+          }
+        }
+      }
     }
     return ary;
   }

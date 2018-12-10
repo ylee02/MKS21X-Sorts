@@ -48,8 +48,9 @@ public class Sorts {
         boolean done = false;
         int y = i;
         int temp = ary[y];
+        y -= 1;
         while (! done) {
-          if (y == 0 || ary[y - 1] > ary[y]) {
+          if (y == 0 || ary[y - 1] < temp) {
             ary[y + 1] = ary[y];
             ary[y] = temp;
             done = true;

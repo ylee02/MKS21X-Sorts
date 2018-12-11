@@ -4,13 +4,14 @@ public class Sorts {
 
   public static void main(String[] args) {
     int counter = 0;
-    int[] ary = new int[300];
+    int[] ary = new int[1000000];
     Random ran = new Random();
-    while (counter < 300) {
-      ary[counter] = ran.nextInt() % 300;
+    /*while (counter < 30000) {
+      ary[counter] = ran.nextInt() % 30000;
       counter++;
     }
-    System.out.println(Arrays.toString(insertionSort(ary)));
+    */
+    System.out.println(Arrays.toString(bubbleSort(ary)));
   }
 
   public static int[] bubbleSort(int[] data) {
@@ -45,21 +46,14 @@ public class Sorts {
   public static int[] insertionSort(int[] ary) {
     for (int i = 1; i < ary.length; i++) {
       if (ary[i - 1] > ary[i]) {
-        boolean done = false;
-        int y = i;
-        int temp = ary[y];
-        y -= 1;
-        while (! done) {
-          if (y == 0 || ary[y - 1] < temp) {
-            ary[y + 1] = ary[y];
-            ary[y] = temp;
-            done = true;
-          }
-          else {
-            ary[y + 1] = ary[y];
-            y--;
-          }
+        int temp = ary[i];
+        int y = i -1;
+        while (y != 0 && ary[y -1] > temp) {
+          ary[y + 1] = ary[y];
+          y--;
         }
+        ary[y + 1] = ary[y];
+        ary[y] = temp;
       }
     }
     return ary;
